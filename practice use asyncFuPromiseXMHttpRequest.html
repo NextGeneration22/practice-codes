@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>new method headache</title>
+  </head>
+  <body>
+    <p id="disHERE">not working</p>
+    <script>
+      async function disFun(){
+        await getMess('new fil for.txt')
+        document.getElementById('disHERE').innerHTML = request.responseText;
+      }
+      function getMess(url){
+        return new Promise(function(resolve, reject){
+         const request = new XMLHttpRequest();
+         request.open('GET', url);
+         request.onload = function() {
+         if (request.status === 200) {
+          resolve()
+           document.getElementById('disHERE').innerText = request.responseText;
+           console.log("good job!!")
+          } else {
+            reject()
+             Error("You still need more work");
+        }
+      };
+      request.onerror = function() {
+        console.error('we can\'t');
+      };
+      request.send();
+    });
+  }
+    disFun()
+    </script>
+  </body>
+</html>
